@@ -1,15 +1,7 @@
 ---
-const response = await fetch('http://localhost:3000/products');
-
-
-
-const products = await response.json();
+import { content } from "../constants";
 ---
-<div>
-    {
-        products.map(p => (
-            <p>{p.name}</p>
-            <p>{p.price}</p>
-        ))
-    }
-</div>
+
+<section id="home">
+    {content.home.title}
+</section>

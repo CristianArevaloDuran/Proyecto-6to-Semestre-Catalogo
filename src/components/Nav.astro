@@ -1,0 +1,55 @@
+---
+import { Image } from 'astro:assets';
+import {navLinks, content, icons} from '../constants';
+---
+
+<nav id="nav">
+    <div class="content">
+        <a class="logo" href={navLinks[0].url}>
+            <Image src={content.nav.logo.logo} alt='logo' draggable=false />
+            <p>{content.nav.logo.title}</p>
+        </a>
+        <ul class="links">
+            {
+                navLinks?.map((link) => (
+                    <li>
+                        <a href={link.url}>
+                            {link.name}
+                        </a>
+                    </li>
+                ))
+            }
+            <li>
+                <button id="cart" title="Carrito">
+                    <Fragment set:html={icons.cart.svg} />
+                </button>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<script>
+    import gsap from 'gsap';
+    import {ScrollTrigger} from 'gsap/ScrollTrigger';
+
+    const nav = document.getElementById('nav');
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const context = gsap.context(() => {
+
+        const navTl = gsap.timeline({
+            scrollTrigger: {
+                scrub: 1,
+                start: 'top top',
+                end: '+=200vh'
+            }
+        })
+
+        navTl
+            .to(nav, {
+                backgroundColor: '#111'
+            })
+
+    }, nav)
+</script>

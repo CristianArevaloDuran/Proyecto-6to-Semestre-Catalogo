@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 300vh;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+html {
+    scroll-behavior: smooth !important;
+}
+
+@theme {
+    --nav-bg-color: #fff;
+
+    /* Fonts */
+
+    --newsreader: 'Newsreader', sans-serif;
+}
+
+@layer components {
+    #nav {
+        @apply w-dvw flex flex-row fixed bg-(--nav-bg-color);
+
+        .content {
+            @apply w-full flex flex-row justify-between px-15 py-4 border-b-[5px];
+
+            .logo {
+                @apply flex flex-col items-center justify-center;
+                img {
+                    @apply w-[50px]
+                }
+            }
+
+            .links {
+                @apply flex flex-row justify-center items-center gap-10;
+
+                li {
+                    a {
+                        @apply font-(family-name:--newsreader);
+                    }
+                    
+                    button {
+                        @apply cursor-pointer;
+                    }
+                }
+            }
+        }
+    }
+
+    #home {
+        @apply min-h-dvh pt-[100px] flex justify-center items-center;
+    }
+}
