@@ -1,0 +1,15 @@
+---
+const response = await fetch('http://localhost:3000/products');
+
+
+
+const products = await response.json();
+---
+<div>
+    {
+        products.map(p => (
+            <p>{p.name}</p>
+            <p>{p.price}</p>
+        ))
+    }
+</div>
